@@ -8,7 +8,7 @@ const SyncUserToDB = async () => {
 
   // Redirect unauthenticated users to the login page
   if (!user || !user.email) {
-    return redirect("/api/auth/login?post_login_redirect_url=/sync-user-to-db");
+    return redirect("/");
   }
 
   // Sync user data to the database
