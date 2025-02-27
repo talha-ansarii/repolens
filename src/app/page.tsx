@@ -17,18 +17,18 @@ export default async function Home() {
         <nav className="ml-auto flex gap-4 sm:gap-6">
         {  (await isAuthenticated()) ? <div> 
           <div className="text-sm font-medium hover:underline underline-offset-4" >
-          <LogoutLink postLogoutRedirectURL="https://repolens.vercel.app">Log out</LogoutLink>
+          <LogoutLink postLogoutRedirectURL="https://repolens.netlify.app">Log out</LogoutLink>
           </div>
         </div>  
         :
          <div>
            <div className="text-sm font-medium hover:underline underline-offset-4" >
-         <LoginLink postLoginRedirectURL="https://repolens.vercel.app/sync-user-to-db">Sign In</LoginLink>
+         <LoginLink postLoginRedirectURL="https://repolens.netlify.app/sync-user-to-db">Sign In</LoginLink>
           </div>
 
           <div className="text-sm font-medium hover:underline underline-offset-4" >
             
-         <RegisterLink postLoginRedirectURL="https://repolens.vercel.app/sync-user-to-db">Sign Up</RegisterLink>
+         <RegisterLink postLoginRedirectURL="https://repolens.netlify.app/sync-user-to-db">Sign Up</RegisterLink>
           </div>
 
           </div>}
@@ -56,7 +56,7 @@ export default async function Home() {
             : 
             <div>
                 <Button>
-         <RegisterLink postLoginRedirectURL="https://repolens.vercel.app/sync-user-to-db">Sign up to Get Started.</RegisterLink>
+         <RegisterLink postLoginRedirectURL="https://repolens.netlify.app/sync-user-to-db">Sign up to Get Started.</RegisterLink>
                 </Button>
 
               </div>}

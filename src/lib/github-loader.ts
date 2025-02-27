@@ -13,7 +13,6 @@ export const loadGithubRepo = async (githubUrl: string , githubToken?: string) =
         unknown: "warn",
         ignoreFiles : ['package-lock.json', 'yarn.lock', 'node_modules', 'pnpm-lock.yaml', 'bun.lockb'],
         maxConcurrency : 5,
-
       }
     );
     const docs = await loader.load();
