@@ -1,7 +1,6 @@
 import React from 'react'
 import {SidebarProvider} from  "@/components/ui/sidebar"
 import { AppSidebar } from './dashboard/app-sidebar'
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 type Props = {
     children: React.ReactNode
