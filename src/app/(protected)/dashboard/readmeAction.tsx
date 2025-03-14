@@ -50,7 +50,7 @@ export const generateReadme = async (projectId: string) => {
   // Call Gemini API to generate README
   (async () => {
     const { textStream } = await streamText({
-      model: google("gemini-2.0-flash-thinking-exp-01-21"),
+      model: google("gemini-2.0-flash"),
       prompt: `
 
       select only file names of the files which give context of the project so that thier content can be used to generate a readme file

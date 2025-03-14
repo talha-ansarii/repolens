@@ -31,12 +31,12 @@ const Readme = () => {
         const { output, fileReferences } = await generateReadme(projectId)
         setFileRefrences(fileReferences)
         setOpen(true)
-        setLoading(false)
         for await (const delta of readStreamableValue(output)){
             if(delta){
                 setReadme(prev => prev + delta)
             }
         }
+        setLoading(false)
         
     }
 
