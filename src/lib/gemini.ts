@@ -2,7 +2,7 @@ import {GoogleGenerativeAI} from "@google/generative-ai"
 import {Document} from "@langchain/core/documents"
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
 const model = genAI.getGenerativeModel({
-    model : 'gemini-2.0-flash-thinking-exp-01-21'
+    model : 'gemini-2.0-flash'
 })
 
 
