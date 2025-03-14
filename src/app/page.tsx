@@ -113,6 +113,9 @@ export default async function Home() {
         <a className="text-xs hover:underline underline-offset-4" href="https://github.com/talha-ansarii" target="_blank" rel="noopener noreferrer">
           Github
         </a>
+        <a className="text-xs hover:underline underline-offset-4" href="https://portfolio-talha-ansaris-projects.vercel.app" target="_blank" rel="noopener noreferrer">
+          Portfolio
+        </a>
         
       </nav>
     </footer>
