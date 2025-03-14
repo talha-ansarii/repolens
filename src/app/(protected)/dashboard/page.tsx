@@ -23,10 +23,7 @@ const DashboardPage = () => {
   return (
     <div>
       <div className='flex items-center justify-between flex-wrap gap-y-4'>
-        {/* Github Link  */}
-        {/* {
-          user && <div>{user.given_name}</div>
-        } */}
+        
         <div className='w-fit rounded-md bg-primary px-4 py-3'>
           <div className='flex items-center'>
             <Github className='size-5 text-whitw'/>
@@ -49,8 +46,8 @@ const DashboardPage = () => {
 
       </div>
      
-      <div className="mt-4">
-        <div className='grid overflow-scroll grid-cols-1 gap-4 sm:grid-cols-5'>
+      <div className="mt-4 overflow-hidden ">
+        <div className='grid  grid-cols-1 gap-4 sm:grid-cols-5'>
           <AskQuestionCard/>
           <Readme/>
         </div>

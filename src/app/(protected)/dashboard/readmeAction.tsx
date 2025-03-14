@@ -11,7 +11,6 @@ const google = createGoogleGenerativeAI({
 // List of file patterns to exclude
 const EXCLUDED_FILES = [
   ".gitignore",
-  "README.md",
   'node_modules',
 ];
 
@@ -29,7 +28,7 @@ export const generateReadme = async (projectId: string) => {
       sourceCode: true,
       summary: true,
     },
-    take: 20, // Adjust as needed
+    take: 20, 
   });
 
   // Filter out generic files
@@ -45,13 +44,13 @@ export const generateReadme = async (projectId: string) => {
   let context = "";
   for (const doc of filteredResult) {
     context += `### File: ${doc.fileName}\n`;
-    context += `**Source Code:**\n\`\`\`\n${doc.sourceCode}\n\`\`\`\n\n`;
+    // context += `**Source Code:**\n\`\`\`\n${doc.sourceCode}\n\`\`\`\n\n`;
     context += `**Summary:** ${doc.summary}\n\n`;
   }
   // Call Gemini API to generate README
   (async () => {
     const { textStream } = await streamText({
-      model: google("gemini-1.5-pro"),
+      model: google("gemini-2.0-flash-thinking-exp-01-21"),
       prompt: `
 
       select only file names of the files which give context of the project so that thier content can be used to generate a readme file

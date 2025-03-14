@@ -10,7 +10,8 @@ import Image from 'next/image'
 import CodeReferences from './code-references'
 import ReactMarkdown from 'react-markdown'
 import { Copy } from 'lucide-react'
-
+import { toast } from 'sonner'
+import { Loader } from 'lucide-react';
 const Readme = () => {
     const {selectedProjectId} = useProject()
     const projectId = selectedProjectId || ''
@@ -22,8 +23,11 @@ const Readme = () => {
         summary: string
     }[]>([])
 
+    const [loading, setLoading] = React.useState(false)
+
     const generateReadmee = async () => {
         setReadme('')
+        setLoading(true)
         const { output, fileReferences } = await generateReadme(projectId)
         setFileRefrences(fileReferences)
         setOpen(true)
@@ -32,11 +36,12 @@ const Readme = () => {
                 setReadme(prev => prev + delta)
             }
         }
+        setLoading(false)
     }
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(readme).then(() => {
-            alert("Copied to clipboard!")
+            toast.success("Copied to clipboard!")
         }).catch(err => console.error("Failed to copy: ", err))
     }
 
@@ -47,9 +52,13 @@ const Readme = () => {
                     <DialogHeader>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-2'>
-                                <DialogTitle>
-                                    <Image src='/logo.webp' alt='logo' width={40} height={40}/>
+                                <DialogTitle className='flex items-center gap-2'>
+                                    <Image src='/git.svg' alt='logo' width={40} height={40}/>
+                                    Readme
                                 </DialogTitle>
+                            </div>
+                            <div>
+                              {loading && <Loader size={24} className='animate-spin' />}
                             </div>
                             <Button onClick={copyToClipboard} className='flex mt-4 items-center gap-1'>
                                 <Copy size={16} /> Copy
@@ -60,7 +69,10 @@ const Readme = () => {
                     <Button type='button' onClick={() => setOpen(false)}>Close</Button>
                 </DialogContent>
             </Dialog>
-            <Button onClick={generateReadmee}>Generate Readme</Button>
+            <Button className='w-[150px]' onClick={generateReadmee}>{
+
+            loading ? <Loader className='animate-spin ' size={24} /> : 'Generate Readme'
+}</Button>
         </div>
     )
 }

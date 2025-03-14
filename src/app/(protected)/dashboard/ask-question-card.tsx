@@ -13,6 +13,7 @@ import CodeReferences from './code-references'
 import { api } from '@/trpc/react'
 import { toast } from '@/hooks/use-toast'
 import useRefetch from '@/hooks/use-refetch'
+import { Loader } from 'lucide-react'
 
 
 const AskQuestionCard = () => {
@@ -42,12 +43,12 @@ const AskQuestionCard = () => {
 
         setFileRefrences(fileRefrences)
 
+        setLoading(false)
         for await (const delta of readStreamableValue(output)){
             if(delta){
                 setAnswer(prev => prev + delta)
             }
         }
-        setLoading(false)
     }   
 
   return (
@@ -57,7 +58,7 @@ const AskQuestionCard = () => {
             <DialogHeader>
                 <div className='flex items-center gap-2'>
                     <DialogTitle>
-                        <Image src='/logo.webp' alt='logo' width={40} height={40}/>
+                        <Image src='/git.svg' alt='logo' width={40} height={40}/>
                     </DialogTitle>
                     <Button disabled={saveAnswer.isPending} variant={"outline"} onClick={()=>{
                         saveAnswer.mutate({
@@ -92,7 +93,12 @@ const AskQuestionCard = () => {
 
             <MDEditor.Markdown  source={answer}  className='max-w-[80vw] p-4 rounded-md   max-h-[50vh] overflow-scroll' />
             </div>
-            <Button type='button' onClick={() => setOpen(false)}>Close</Button>
+            <Button type='button' onClick={() => {
+                setOpen(false)
+                setAnswer('')
+                setQuestion('')
+                setLoading(false)
+            } }>Close</Button>
             <CodeReferences filesRefrences={fileRefrences} />
             
 
@@ -110,7 +116,9 @@ const AskQuestionCard = () => {
                         onChange={e => setQuestion(e.target.value)}
                     />
                     <div className="h-4"></div>
-                    <Button disabled={loading} type='submit' >Ask Repo Lens</Button>
+                    <Button disabled={loading} type='submit' >
+                        {loading ? <Loader className='animate-spin' size={24} /> : 'Ask'}
+                    </Button>
                 </form>
             </CardContent>
         </Card>

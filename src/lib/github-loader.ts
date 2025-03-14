@@ -11,7 +11,7 @@ export const loadGithubRepo = async (githubUrl: string , githubToken?: string) =
         branch: "main",
         recursive: true,
         unknown: "warn",
-        ignoreFiles : ['package-lock.json', 'yarn.lock', 'node_modules', 'pnpm-lock.yaml', 'bun.lockb'],
+        ignoreFiles : ['package-lock.json','.gitignore', 'yarn.lock', 'node_modules', 'pnpm-lock.yaml', 'bun.lockb'],
         maxConcurrency : 5,
       }
     );

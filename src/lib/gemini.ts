@@ -2,11 +2,12 @@ import {GoogleGenerativeAI} from "@google/generative-ai"
 import {Document} from "@langchain/core/documents"
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
 const model = genAI.getGenerativeModel({
-    model : 'gemini-1.5-flash'
+    model : 'gemini-2.0-flash-thinking-exp-01-21'
 })
 
 
 export const aiSummariseCommit = async (diff : string) => {
+    console.log("difffffffffffff",diff)
     const response = await model.generateContent([
         `You are an expert programmer, and you are trying to summarize a git diff.
 Reminders about the git diff format:
@@ -53,7 +54,7 @@ It is given only as an example of appropriate comments.`,
 export const summariseCode = async (doc : Document) => {
    try {
     console.log("getting summary for", doc.metadata.source)
-    const code = doc.pageContent.slice(0, 10000) // limit to 10k characters
+    const code = doc.pageContent.slice(0, 5000)
     const response = await model.generateContent([
         `You are an intelligent senior software engineer who spelises in onboarding junior software engineers onto projects`,
         `You are onboarding a junior software engineer and explaining to them the purpose of: ${doc.metadata.source} file
@@ -61,7 +62,7 @@ export const summariseCode = async (doc : Document) => {
         ---
         ${code}
         ---
-            Give a summary not more than 100 words of the code above
+            Give a summary not more than 300 words of the code above
         `,
     ])
 
