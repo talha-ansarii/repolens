@@ -42,7 +42,6 @@ export function AppSidebar(){
                 <span className="text-xl w-[80%]   font-bold">
                     REPO LENS
                 </span>}
-
                 </Link>
             </SidebarHeader>
             <SidebarContent>
