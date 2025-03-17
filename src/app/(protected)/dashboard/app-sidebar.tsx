@@ -32,8 +32,8 @@ export function AppSidebar(){
 
      const {projects, selectedProjectId, setSelectedProjectId} = useProject()
     return (
-        <Sidebar collapsible="icon" variant="floating">
-            <SidebarHeader className="flex flex-row justify-start items-center" >
+        <Sidebar className="bg-white" collapsible="icon" variant="floating">
+            <SidebarHeader className="flex bg-white flex-row justify-start items-center" >
                 <Link className="flex gap-2" href={"/"}>
                 <span className=" ">
                 <Github className="h-6 w-6 mr-2" />
@@ -44,7 +44,7 @@ export function AppSidebar(){
                 </span>}
                 </Link>
             </SidebarHeader>
-            <SidebarContent>
+            <SidebarContent className="bg-white">
                 <SidebarGroup>
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
