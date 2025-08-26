@@ -11,14 +11,23 @@ type Props = {
 const SideBarLayout = ({children} : Props) => {
   return (
     <SidebarProvider>
-      <SidebarTrigger/>   
+      <div className="flex h-screen bg-gradient-to-br from-slate-50 to-white">
         <AppSidebar/>
-        <main className='w-full m-2'>
-          {/* main content */}
-          <div className='border-sidebar-border bg-sidebar border shadow rounded-md overflow-y-scroll h-[calc(100vh-1rem)] p-4 '>
-            {children}
-          </div>
-        </main>
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Header with sidebar trigger */}
+          <header className="flex items-center gap-4 p-4 border-b border-slate-200/50 bg-white/80 backdrop-blur-sm">
+            <SidebarTrigger className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg p-2 transition-colors"/>
+            <div className="flex-1" />
+          </header>
+          
+          {/* Main content area */}
+          <main className='flex-1 overflow-auto'>
+            <div className='h-full p-6'>
+              {children}
+            </div>
+          </main>
+        </div>
+      </div>
     </SidebarProvider>
   )
 }
