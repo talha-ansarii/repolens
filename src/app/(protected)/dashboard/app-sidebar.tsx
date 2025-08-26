@@ -114,9 +114,9 @@ export function AppSidebar(){
                                                         ? "bg-gradient-to-br from-blue-600 to-purple-600 text-white" 
                                                         : "bg-gray-200 text-gray-600 group-hover:bg-gray-300"
                                                 )}>
-                                                    {project?.name[0].toUpperCase()}
+                                                    {project?.name?.[0]?.toUpperCase() ?? ""}
                                                 </div>
-                                                <span className="truncate font-medium">{project.name}</span>
+                                                <span className="truncate font-medium">{project?.name ?? ""}</span>
                                                 {isSelected && (
                                                     <div className="ml-auto">
                                                         <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
